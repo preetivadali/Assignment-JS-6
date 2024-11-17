@@ -72,6 +72,7 @@ reloadButton.addEventListener('click', function() {
 // Update time
 let startTime = 15;
 const timer  = document.getElementById("time");
+timer.textContent = startTime;
 
 function updateTime(){
   startTime--;
@@ -82,9 +83,16 @@ function updateTime(){
 
   if(startTime <= 0){
     clearInterval(countDown);
+    gameOver();
   }
 }
 const countDown = setInterval(updateTime, 1500);
 
-
+function gameOver() {
+  // Check if the timer has hit zero
+  if (startTime <= 0) {
+    const container = document.querySelector(".container"); 
+    container.innerHTML = "<h1>Game Over</h1> "; 
+  }
+}
 
